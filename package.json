@@ -1,0 +1,37 @@
+{
+  "name": "whatsapp-mern",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://saumyasarkar.com/whatsapp",
+  "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.5.1",
+    "@mui/material": "^5.5.3",
+    "axios": "^0.26.1",
+    "bootstrap": "^5.1.3",
+    "pusher-js": "^7.0.6",
+    "react": "^18.0.0",
+    "react-bootstrap": "^2.2.2",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^5.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

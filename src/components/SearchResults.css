@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.sidebarChat{
+    font-family: Helvetica, sans-serif;
+    display: flex;
+    padding: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #f6f6f6;    
+}
+
+.sidebarChat:hover{
+    background-color: #ebebeb;
+}
+
+.sidebarChat_info > .span {
+    font-size: 16px;    
+}
+
+.sidebarChat_info > p {
+    font-size: 13px;
+    color: #707070;
+    margin-top: 6px;
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.sidebarChat_info{
+    margin-left: 15px;
+}
