@@ -2,7 +2,7 @@
   "name": "whatsapp-mern",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://saumyasarkar.com/whatsapp",
+  "homepage": "https://whatsapp-clone-ss.vercel.app/",
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
