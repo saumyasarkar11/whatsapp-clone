@@ -180,7 +180,7 @@ export default function App (){
 
   let DashBoard;
 
-  loading == true   
+  loading == false   
   ? DashBoard = 
   <div className="app">
     <div className='app_body'>
