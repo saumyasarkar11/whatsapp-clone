@@ -13,6 +13,7 @@ export default function App (){
     localStorage.getItem('user') === null || localStorage.getItem('rememberMe') === 'false'
     ? false : true
   );  
+  const [loading, setLoading] = useState(false);
   const [currChat, setCurrChat] = useState({
     "currUser": 0,
     "conv_id": 0
@@ -33,6 +34,10 @@ export default function App (){
       }) 
 
       fetchConv();
+
+      setTimeout(()=>{
+        setLoading(false);
+      }, 500)
 
       setInterval(() => {
           axios.put(`api/v1/setStatus?id=${localStorage.getItem('user_id')}`);
@@ -173,7 +178,10 @@ export default function App (){
     createConv(id);
   }
 
-  const DashBoard = 
+  let DashBoard;
+
+  loading == true   
+  ? DashBoard = 
   <div className="app">
     <div className='app_body'>
       <Sidebar conversations={conversations} createConv={createConvUtil} toggle={toggleChat} users={allUsers} messages={messages}/>
@@ -181,8 +189,15 @@ export default function App (){
     </div>      
   </div>
 
+  :DashBoard = 
+  <div className="app">
+    <div className='app_loader'>
+
+    </div>      
+  </div>
+
   return (
-    loggedIn ? DashBoard : <Login setStat={setLoggedIn}/> 
+    loggedIn ? DashBoard : <Login setStat={setLoggedIn} loader={setLoading}/> 
     
   );
 }

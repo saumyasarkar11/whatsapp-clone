@@ -4,7 +4,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import axios from '../axios';
 import logo from '../images/whatsapp.png';
 
-export default function LoginAlt({setStat}) {
+export default function LoginAlt(props) {
   const [formData, setFormData] = useState(
     {
         phone: "",
@@ -28,12 +28,13 @@ export default function LoginAlt({setStat}) {
   function handleSubmit(e){
     e.preventDefault();
     axios.get(`/api/v1/auth?phone=${formData.phone}&password=${formData.password}`).then((response) => {
-        if(response.data.log){
+        if(response.data.log){            
             localStorage.setItem('rememberMe', formData.keepSigned);
             localStorage.setItem('user', formData.phone);
             localStorage.setItem('user_id', response.data.id);
             localStorage.setItem('image', response.data.image);
-            setStat(true);
+            props.setStat(true);
+            props.loader(true);
         } else {
             alert("Phone number or password is wrong");
         }
