@@ -14,17 +14,15 @@ export default function LoginAlt({setStat}) {
   )  
   
   function handleChange(event){
-    const{name, value, type, checked} = event.target;
-    if(type === "number" && value.length < 10){
-      setFormData(prevData => {
-          return (                 
-              {
-                  ...prevData,    
-                  [name]: type === "checkbox" ? checked : value
-              }
-          )
-      })
-    }
+    const{name, value, type, checked} = event.target
+    setFormData(prevData => {
+        return (                 
+            {
+                ...prevData,    
+                [name]: type === "checkbox" ? checked : value
+            }
+        )
+    })
   }
   
   function handleSubmit(e){
