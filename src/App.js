@@ -29,15 +29,19 @@ export default function App (){
   }
 
   useEffect(() => {
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false);
+    }, 3000)
+  }, [])
+  
+
+  useEffect(() => {
       axios.get(`/api/v1/allUsers?id=${localStorage.getItem('user_id')}`).then((response) => {
         setAllUsers(response.data);      
       }) 
 
-      fetchConv();
-
-      setTimeout(()=>{
-        setLoading(false);
-      }, 500)
+      fetchConv();      
 
       setInterval(() => {
           axios.put(`api/v1/setStatus?id=${localStorage.getItem('user_id')}`);
@@ -192,7 +196,33 @@ export default function App (){
   :DashBoard = 
   <div className="app">
     <div className='app_loader'>
-
+      <div class="boxes">
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+      </div>
+      <p>Loading WhatsApp Web...</p>
     </div>      
   </div>
 

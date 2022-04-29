@@ -1,7 +1,7 @@
 .sidebar{
     display: flex;
     flex-direction: column;
-    flex: 0.3;
+    flex: 0.27;
 }
 
 .sidebar_header{
@@ -31,7 +31,7 @@
     height: 39px;
     padding: 10px;
     border-right: 1px solid rgb(243, 243, 243);
-    border-bottom: 1px solid rgb(243, 243, 243);
+    border-bottom: 1px solid #e9e9e9
 }
 
 .sidebar_searchContainer{
