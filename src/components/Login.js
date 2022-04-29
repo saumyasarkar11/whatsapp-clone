@@ -15,6 +15,7 @@ export default function LoginAlt({setStat}) {
   
   function handleChange(event){
     const{name, value, type, checked} = event.target
+    (type === "number" && value.length < 10) &&
     setFormData(prevData => {
         return (                 
             {
