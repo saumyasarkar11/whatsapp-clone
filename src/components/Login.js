@@ -35,6 +35,9 @@ export default function LoginAlt(props) {
             localStorage.setItem('image', response.data.image);
             props.setStat(true);
             props.loader(true);
+            setTimeout(()=>{
+              props.loader(false);
+            }, 3000)
         } else {
             alert("Phone number or password is wrong");
         }
@@ -57,8 +60,10 @@ export default function LoginAlt(props) {
                 type="text" 
                 onChange={handleChange} 
                 name='phone' 
+                maxLength={10}
                 placeholder='Phone'
                 value={formData.phone} 
+                autoComplete='off'
                 required 
               />
             </div>

@@ -5,10 +5,12 @@ import Chat from './components/Chat';
 import Pusher from 'pusher-js';
 import axios from './axios';
 import Login from './components/Login';
+import LockIcon from '@mui/icons-material/Lock';
 
 
 export default function App (){
   const [messages, setMessages] = useState([]);
+  const [search, setSearch] = useState("");
   const [loggedIn, setLoggedIn] = useState(
     localStorage.getItem('user') === null || localStorage.getItem('rememberMe') === 'false'
     ? false : true
@@ -102,8 +104,12 @@ export default function App (){
       "time": hours+":"+minutes+":"+seconds,
       "seen": false      
     }
-    axios.post('api/v1/messages/new', data);
-    setMessageSend("");
+    axios.get(`/api/v1/checkOnline?id=${currChat.currUser}`).then((response) => {
+      data.seen = response.data;
+      axios.post('api/v1/messages/new', data);
+      setMessageSend("");
+    })
+    
   }
 
   useEffect(() => {
@@ -137,7 +143,8 @@ export default function App (){
     
   }, [messages]) 
 
-  function toggleChat(user, conv){    
+  function toggleChat(user, conv){   
+    setSearch(''); 
     setCurrChat(() => {
         return ({
           "currUser": user,
@@ -188,7 +195,7 @@ export default function App (){
   ? DashBoard = 
   <div className="app">
     <div className='app_body'>
-      <Sidebar conversations={conversations} createConv={createConvUtil} toggle={toggleChat} users={allUsers} messages={messages}/>
+      <Sidebar conversations={conversations} createConv={createConvUtil} search={search} searchFunc={setSearch} toggle={toggleChat} users={allUsers} messages={messages}/>
       <Chat curr={currChat} send={sendMsg} messages={messages} setMsg={setMsg} msg={messageSend} users={allUsers} />
     </div>      
   </div>
@@ -222,7 +229,11 @@ export default function App (){
             <div></div>
         </div>
       </div>
-      <p>Loading WhatsApp Web...</p>
+      <h4>Loading WhatsApp Web</h4>
+      <p id='encrypted_tag1'>
+        <LockIcon />
+        End-to-end encrypted
+      </p>
     </div>      
   </div>
 

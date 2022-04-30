@@ -26,7 +26,7 @@ export default function Chat(props) {
             <h1>WhatsApp Web <span>NEW</span></h1>          
             <p>
                 Now send and receive messages without keeping your phone online.<br />
-                Use whatsApp on upto 4 linked devices and 1 phone at the same time.
+                Use WhatsApp on upto 4 linked devices and 1 phone at the same time.
             </p>
             <p id='encrypted_tag'>
             <LockIcon />

@@ -17,9 +17,10 @@
     flex-direction: column;
 }
 
-.app_loader > p{
-    margin-top: 110px;
+.app_loader > h4{
+    margin-top: 120px;
     color: rgb(118, 118, 118);
+    font-weight: 300;
 }
 
 .boxes {
@@ -177,3 +178,16 @@
       transform: translate(100%, 100%);
     }
   }
+
+  #encrypted_tag1{
+    display: flex;
+    align-items: center;
+    color: rgb(118, 118, 118);
+    font-size: 13px;
+    margin-top: 1rem;
+}
+
+#encrypted_tag1 > .MuiSvgIcon-root{
+    font-size: 13px !important;
+    margin-right: 6px;
+}

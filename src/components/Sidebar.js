@@ -10,31 +10,35 @@ import axios from '../axios';
 import SearchResults from './SearchResults';
 
 export default function Sidebar(props) {
-
-    const [search, setSearch] = useState("");
+    
     const [users, setUsers] = useState([]);    
     const id = localStorage.getItem('user_id')
     let dep;
 
     useEffect(() => {        
-        axios.get(`/api/v1/users?search=${search}&leave=${id}`).then((response) => {
+        axios.get(`/api/v1/users?search=${props.search}&leave=${id}`).then((response) => {
             setUsers(response.data);            
         })
-    }, [search])
+    }, [props.search])
       
     function showUsers(event){
         if(event.target.value === ""){
-            setSearch(" ");
+            props.searchFunc(" ");
         }
-        setSearch(event.target.value);
+        props.searchFunc(event.target.value);
     } 
 
-    if(users.length){
-        dep = users.map((item) => {
-            return(
-                <SearchResults createConv={props.createConv} key={item.id} item={item} />
-            )
-        })
+    if(props.search.length != 0){
+        console.log(props.search);
+        if(users.length){
+            dep = users.map((item) => {
+                return(
+                    <SearchResults createConv={props.createConv} key={item.id} item={item} />
+                )
+            })
+        } else {
+            dep = <div className="noconv">Search results do not match any user</div>
+        }       
     } else {
         if(props.conversations.length == 0){
             dep = <div className="noconv">No prior conversations</div>
@@ -67,7 +71,7 @@ export default function Sidebar(props) {
         <div className='sidebar_search'>
             <div className='sidebar_searchContainer'>
                 <SearchIcon />
-                <input type='number' value={search} name="search_field" onChange={showUsers} placeholder='Search or start a new chat' autoComplete='off'/>
+                <input type='number' value={props.search} name="search_field" onChange={showUsers} placeholder='Search or start a new chat' autoComplete='off'/>
             </div>
         </div>
 

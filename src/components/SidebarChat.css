@@ -9,28 +9,39 @@
 }
 
 .sidebarChat:hover{
-    background-color: #ebebeb;
-}
-
-.sidebarChat_info > .span {
-    font-size: 16px;    
-}
-
-.sidebarChat_info > p {
-    font-size: 13px;
-    color: #707070;
-    margin-top: 6px;
+    background-color: #f0f2f5;
 }
 
 .sidebarChat_info{
     margin-left: 15px;
+    width: 100%;
 }
 
 .sidebarChat_info > p{
     display: flex;
     align-items: center;
+    font-size: 11px;
+    color: #707070;
+    margin-top: 6px;
 }
 
 .sidebarChat_info > p > .MuiSvgIcon-root {
     font-size: 16px;
+}
+
+.info_div{
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.info_name{
+    font-size: 16px;
+    
+}
+
+.last_time{
+    font-size: small;
+    color: #707070;
+    margin-left: auto;
 }

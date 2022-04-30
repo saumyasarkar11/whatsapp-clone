@@ -6,7 +6,21 @@ import axios from '../axios';
 
 export default function SidebarChat(props) {
   let conv_id;
-  const [lastMsg, setLastMsg] = useState({msg: '', from: '', seen: '', conv_id: ''});
+  const date = new Date();
+  let month; let day; let year;
+  year = date.getFullYear();
+  if(date.getMonth()<10){
+    month = '0' + date.getMonth();
+  } else {
+    month = date.getMonth();
+  }
+
+  if(date.getDate()<10){
+    day = '0' + date.getDate();
+  } else {
+    day = date.getDate();
+  }
+  const [lastMsg, setLastMsg] = useState({});
   const id = localStorage.getItem('user_id');
   if(props.item.user1 == id){
     conv_id = props.item.user2;
@@ -15,10 +29,10 @@ export default function SidebarChat(props) {
   }  
   let icon;
   icon = (lastMsg.seen) ? <DoneAllIcon style={{color: "#1a8fb9"}} /> : <DoneAllIcon />;
-
+  let dateTime;
   useEffect(() => {
     axios.get(`/api/v1/conversations/lastTxt/?id=${props.item.conversation_id}`).then((response) => {
-      setLastMsg(response.data);
+      setLastMsg(response.data);      
     })
   }, [props.messages])
   
@@ -30,7 +44,7 @@ export default function SidebarChat(props) {
         <div className='sidebarChat' id={conv_id} onClick={() => props.toggle(conv_id, props.item.conversation_id)}>
             <Avatar src={item.image} />
             <div className='sidebarChat_info'>
-                <span>{item.name}</span>
+                <div className='info_div'><span className='info_name'>{item.name}</span><span className='last_time'>{(lastMsg.date === year+'-'+month+'-'+day) ? lastMsg.time : lastMsg.date}</span></div>
                 <p>{id == lastMsg.from ? icon : ''}&nbsp;{lastMsg.msg}</p>
             </div>
         </div>
