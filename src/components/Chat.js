@@ -86,7 +86,7 @@ export default function Chat(props) {
                     <AttachFileIcon />
                 </IconButton>  
                 <form>
-                    <input onChange={(event) => {props.setMsg(event.target.value);}} name="message" value={props.msg} placeholder="Type a message" type="text" required/>
+                    <input onChange={(event) => {props.setMsg(event.target.value);}} name="message" value={props.msg} placeholder="Type a message" type="text" autoComplete="off" required/>
                     <button onClick={sendMessage} type="submit" hidden>Send a message</button>
                 </form>
                 <IconButton>
